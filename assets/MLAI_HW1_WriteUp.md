@@ -335,18 +335,10 @@ def performPca():
 
 #### classify
 The <code>classify</code> function performs principal component analysis on the first 4 PCs and then uses a **Gaussian Naivë-Bayes classifier** on the projected data which has the following formulation:
-$$ {Bayes Theorem}
-Bayes\ Theorem : \quad \quad P(A | B) = \frac{P(B|A)\cdot P(A)}{P(B)}
-$$
+<img src="https://quicklatex.com/cache3/c1/ql_058af1162f66f29aece3bf04cb681fc1_l3.png">
 
-$$ {Decision Rule}
-Decision\ Rule:
-\begin{align}
-    f(x) & = \underset{y\ \in \ \{0, ..., K\}}{argmax}P(y\ |\ x_1,...,x_d)\\
-    & = \underset{y\ \in \ \{0, ..., K\}}{argmax}P(x_1,...,x_n\ |\ y)P(y)\\
-    & = \underset{y\ \in \ \{0, ..., k\}}{argmax}\prod_{i=1}^d P(x_i\ |\ y)P(y)
-  \end{align}
-$$
+<img src="https://quicklatex.com/cache3/d4/ql_7256ba6ed371c7cd7d01bf34ec761bd4_l3.png">
+
 <br><br>
 The function carries out two experiments: the first one considering components 1 and 2, the second one components 3 and 4.
 <br>
@@ -700,7 +692,7 @@ The first part of the experience was focused on Principal Component Analysis, th
 
 One of the requests was about plotting the scatter plots of the projected data on some of the components, the following is the image containing, from left to right, component 1 vs 2, 3 vs 4 and 11 vs 12.
 
-![scatterplots.png](attachment:scatterplots.png)
+![scatterplots.png](scatterplots.png)
 
 As it appears from the image, the points on the plot are a lot more irregularly positioned and overlapped in the last two plots while, on the contrary, they are a lot more distinguishible in the first one.
 <br><br>
@@ -724,7 +716,7 @@ Otherwise we could simply plot the cumulative variance and see how many componen
 
 An other task of the homework was to visualize the reconstruction of an image using first two components, then six, sixty and finally using the last six ones. The result is presented below:
 <br>
-![PCsDifferences.png](attachment:PCsDifferences.png)
+![PCsDifferences.png](PCsDifferences.png)
 <br>
 What we see is pretty strange. While, as expected, the reconstruction done using 60 components allows us to distinguish the original image, the other ones seem to not being representing such an image at all, instead what we see is the **shape of a face**.
 <br>
@@ -740,13 +732,13 @@ More precisely the task was to run three experiments: apart from the first one w
 
 #### Experiment 0 : All the Features
 
-![classification_originals.PNG](attachments:classification_originals.PNG)
+![classification_originals.PNG](classification_originals.PNG)
 
 
 
 #### Experiment 1 : Components 1 and 2
 
-![classification_12.PNG](attachment:classification_12.PNG)
+![classification_12.PNG](classification_12.PNG)
 
 The picture above is taken from the output of the classification algorithm and represents some statistic that may be interesting to analyze. 
 <br>
@@ -769,7 +761,7 @@ Altough _"person"_ is predicted more often, it has a lower rate in the correctne
 Finally, the overall precision using components 1 and 2 is around 63.303%
 
 #### Experiment 2 : Components 3 and 4
-![classification_34.PNG](attachment:classification_34.PNG)
+![classification_34.PNG](classification_34.PNG)
 
 All the considerations that are made for the experiment 1 can be done for experiment 2 as well with slight differences: the _"person"_ class is still the most predicted one, but now the _"dog"_ class is much more predicted than before while _"house"_ predictions are the half of before. 
 <br>
@@ -777,7 +769,7 @@ This is clearly due to the distribution of the data points projected on the 3rd 
 
 #### Experiment 0 : All the Features
 
-![classification_originals.PNG](attachment:classification_originals.PNG)
+![classification_originals.PNG](classification_originals.PNG)
 
 Finally, the experiment using all the dataset features.
 <br>
@@ -788,27 +780,22 @@ However in this particular case our dataset was composed of a relatively low num
 #### Decision Boundaries
 Finally, the following is a picture containing the decision boundaries for experiment 1 and 2: they perfectly reflect the results shown in the tables, in fact since the dots hovering the decision boundaries represent the test set, as an example one could look at the left-hand plot: inside the decision boundaries related to class _"dog"_ appears only one point which is a dog indeed, i.e. the same information contained in the table (class dog predicted only once, correctly).
 
-<img src="decision_boundaries.png" width="850">
+<img src="./decision_boundaries.png" width="850">
 
 ### Conclusions
 
 Principal Component Analysis is a dimensionality reduction system that is based on the fact that the principal components with highest variance will be the most useful for solving our classification problem, since the best components will be the best features that will allow us to separate data. While it certainly is a good first-approach when there is the need to have some dimensionality reduction on the data set, it may be not always the best choice: in fact our assumption when using PCA is that the **inter-class** variance is more important than the **intra-class** variance, but lets take into account the following examples:
 
-<img src="2018_PCA_interclass.png" width="400">
+<img src="./2018_PCA_interclass.png" width="400">
 
 In the previous image the **inter-class** variance is indeed important, in fact the most of the variance that is the one captured by the 1st principal component is the one along which the classes are more distinguishable: it would be good to use PC1 for classification.
 <br><br>
 Let us now take a look at an other case:
 
-<img src="2018_PCA_intraclass.png" width="400">
+<img src="./2018_PCA_intraclass.png" width="400">
 
 In this case PC1 captures the **intra-class** variance and thus it won't be suitable to perform a very good classification, instead PC2 would be more interesting in order to have some class separation.
 <br><br>
 PCA is also very good when it comes to compressing images, however it cannot be done carelessly: as we have seen in this homework, when having a dataset which is **unbalanced** in terms of items per class, the result is that when one will need to uncompress a previously compressed image the reconstruction may be "dirtied" by some of the most characterizing aspects of those images which appeared more often in the training set. 
 <br>
 Thus a good rule of thumb could be to balance the number of images per type in any application, both for image compression and classification.
-
-
-```python
-
-```
