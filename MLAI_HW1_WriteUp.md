@@ -694,7 +694,7 @@ The first part of the experience was focused on Principal Component Analysis, th
 
 One of the requests was about plotting the scatter plots of the projected data on some of the components, the following is the image containing, from left to right, component 1 vs 2, 3 vs 4 and 11 vs 12.
 
-![scatterplots.png](scatterplots.png)
+![scatterplots.png](assets/scatterplots.png)
 
 As it appears from the image, the points on the plot are a lot more irregularly positioned and overlapped in the last two plots while, on the contrary, they are a lot more distinguishible in the first one.
 <br><br>
@@ -712,13 +712,13 @@ Whether the analysis is performed to build a data compressor or to extract the b
 By taking the eigenvalues and dividing each of them by the sum over all of them we can get a pretty good indication on how much information they convey with respect to the overall information.
 <br>
 Otherwise we could simply plot the cumulative variance and see how many components are required to reach a certain percentage of information, like in the following picture.
-<img src="CumulativeVariance.png" width="500">
+<img src="assets/CumulativeVariance.png" width="500">
 
 #### Image Reconstruction
 
 An other task of the homework was to visualize the reconstruction of an image using first two components, then six, sixty and finally using the last six ones. The result is presented below:
 <br>
-![PCsDifferences.png](PCsDifferences.png)
+![PCsDifferences.png](assets/PCsDifferences.png)
 <br>
 What we see is pretty strange. While, as expected, the reconstruction done using 60 components allows us to distinguish the original image, the other ones seem to not being representing such an image at all, instead what we see is the **shape of a face**.
 <br>
@@ -734,13 +734,13 @@ More precisely the task was to run three experiments: apart from the first one w
 
 #### Experiment 0 : All the Features
 
-![classification_originals.PNG](classification_originals.PNG)
+![classification_originals.PNG](assets/classification_originals.PNG)
 
 
 
 #### Experiment 1 : Components 1 and 2
 
-![classification_12.PNG](classification_12.PNG)
+![classification_12.PNG](assets/classification_12.PNG)
 
 The picture above is taken from the output of the classification algorithm and represents some statistic that may be interesting to analyze. 
 <br>
@@ -763,7 +763,7 @@ Altough _"person"_ is predicted more often, it has a lower rate in the correctne
 Finally, the overall precision using components 1 and 2 is around 63.303%
 
 #### Experiment 2 : Components 3 and 4
-![classification_34.PNG](classification_34.PNG)
+![classification_34.PNG](assets/classification_34.PNG)
 
 All the considerations that are made for the experiment 1 can be done for experiment 2 as well with slight differences: the _"person"_ class is still the most predicted one, but now the _"dog"_ class is much more predicted than before while _"house"_ predictions are the half of before. 
 <br>
@@ -771,7 +771,7 @@ This is clearly due to the distribution of the data points projected on the 3rd 
 
 #### Experiment 0 : All the Features
 
-![classification_originals.PNG](classification_originals.PNG)
+![classification_originals.PNG](assets/classification_originals.PNG)
 
 Finally, the experiment using all the dataset features.
 <br>
@@ -782,19 +782,19 @@ However in this particular case our dataset was composed of a relatively low num
 #### Decision Boundaries
 Finally, the following is a picture containing the decision boundaries for experiment 1 and 2: they perfectly reflect the results shown in the tables, in fact since the dots hovering the decision boundaries represent the test set, as an example one could look at the left-hand plot: inside the decision boundaries related to class _"dog"_ appears only one point which is a dog indeed, i.e. the same information contained in the table (class dog predicted only once, correctly).
 
-<img src="./decision_boundaries.png" width="850">
+<img src="assets/decision_boundaries.png" width="850">
 
 ### Conclusions
 
 Principal Component Analysis is a dimensionality reduction system that is based on the fact that the principal components with highest variance will be the most useful for solving our classification problem, since the best components will be the best features that will allow us to separate data. While it certainly is a good first-approach when there is the need to have some dimensionality reduction on the data set, it may be not always the best choice: in fact our assumption when using PCA is that the **inter-class** variance is more important than the **intra-class** variance, but lets take into account the following examples:
 
-<img src="./2018_PCA_interclass.png" width="400">
+<img src="assets/2018_PCA_interclass.png" width="400">
 
 In the previous image the **inter-class** variance is indeed important, in fact the most of the variance that is the one captured by the 1st principal component is the one along which the classes are more distinguishable: it would be good to use PC1 for classification.
 <br><br>
 Let us now take a look at an other case:
 
-<img src="./2018_PCA_intraclass.png" width="400">
+<img src="assets/2018_PCA_intraclass.png" width="400">
 
 In this case PC1 captures the **intra-class** variance and thus it won't be suitable to perform a very good classification, instead PC2 would be more interesting in order to have some class separation.
 <br><br>
