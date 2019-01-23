@@ -335,6 +335,8 @@ def performPca():
 
 #### classify
 The <code>classify</code> function performs principal component analysis on the first 4 PCs and then uses a **Gaussian Naivë-Bayes classifier** on the projected data which has the following formulation:
+<br><br>
+
 <img src="https://quicklatex.com/cache3/c1/ql_058af1162f66f29aece3bf04cb681fc1_l3.png">
 
 <img src="https://quicklatex.com/cache3/d4/ql_7256ba6ed371c7cd7d01bf34ec761bd4_l3.png">
